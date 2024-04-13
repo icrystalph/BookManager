@@ -11,6 +11,8 @@ public class Book
     private String title;
     private String author;
     private int likes;
+    private int locX = 100;
+    private int locY = 100;
     
     // code for book cover (image)
     private String image;
@@ -53,8 +55,6 @@ public class Book
      */
     
     public void displayBook() {
-        int locX = 100;
-        int locY = 100;
         final double WIDTH = 100; 
         final double HEIGHT = 100;
         
@@ -64,4 +64,28 @@ public class Book
     /**
      * Create getter and/or setter methods here as necessary
      */
+    
+    public String getTitle(){
+        return title;
+    }
+    
+    public String getAuthor(){
+        return author;
+    }
+    
+    public int getLikes(){
+        return likes;
+    }
+    
+    public String getImage(){
+        return image;
+    }
+    
+    public int getLocX(){
+        return locX;
+    }
+    
+    public void setLocX(int locX){
+        this.locX = locX;
+    }
 }

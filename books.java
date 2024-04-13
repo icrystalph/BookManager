@@ -13,6 +13,7 @@ public class books
     // instance variables - replace the example below with your own
     private HashMap<String, Book> library; //declaring the hashmap
     private Book currBook; //store the instance of the current book
+    private int currentLocX = 100; //
 
     /**
      * Constructor for objects of class books
@@ -51,8 +52,20 @@ public class books
         }
         return false;
     }
+    
+    /**
+     * View all the books
+     */
+    public void viewBooks() {
+        
+        // iterates through collection of books(values) and updates currentLocX for each value to prevennt stacking
+        for (Book book : library.values()) {
+            book.setLocX(currentLocX); //currentLockX initialised at start of program as 100.
+            book.displayBook(); //calls displayBook method in book obect 
+            currentLocX += 110;
+        }
+        }
 
-            
     /**
      * Finds book based on name
      * Set current book if found

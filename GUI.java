@@ -21,6 +21,7 @@ public class GUI
         UI.addButton("Add", this::addBook);
         UI.addButton("Remove", this::removeBook);
         UI.addButton("Find", this::findBook);
+        UI.addButton("View all", this::viewBooks);
         UI.addButton("Quit", UI::quit);
         
     }
@@ -60,11 +61,16 @@ public class GUI
             UI.println("Book doesnt exist");
             
         }
-        
-        
-    
     }
     
+    /**
+     * View all the books
+     */
+    
+    public void viewBooks() {
+        books.viewBooks();
+    }
+        
     /**
      * Finds book based on name
      */
