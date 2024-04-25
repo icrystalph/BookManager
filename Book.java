@@ -1,4 +1,5 @@
 import ecs100.*;
+import java.util.HashMap;
 /**
  * support class for book
  *
@@ -10,13 +11,16 @@ public class Book
     // instance variables
     private String title;
     private String author;
-    private int likes;
+    public int likes;
     private int locX = 100;
     private int locY = 100;
+    final double WIDTH = 100; 
+    final double HEIGHT = 100;
     
     // code for book cover (image)
     private String image;
     private static final String DEFAULT_IMAGE = "book.png";
+    private boolean coverClicked = false;
 
 
     /**
@@ -55,11 +59,38 @@ public class Book
      */
     
     public void displayBook() {
-        final double WIDTH = 100; 
-        final double HEIGHT = 100;
-        
         UI.drawImage(this.image, locX, locY, WIDTH, HEIGHT);
     }
+    
+    /**
+     * Edit likes via click
+     */
+    //here, we have a method that does the maths for calculating whether the click 
+    //is within one of the covers or not. So you'd do the 'if x> left & x < right return bulb tru
+    // it will also change onCover boolean variable to true or false. This will then
+    //allow the methods in the GUI to function (doMouse) so if the boolean here returns
+    //a 'true' value it willl trigger the code in doMouse method GUI to work. If its false nothing happens
+    
+    public boolean onCover(double x, double y) {
+        if ((x >= locX) && (x <= locX + WIDTH) &&
+        (y >= locY) && (y <= locY + HEIGHT)){
+            coverClicked = true;
+        }else{
+            coverClicked = false;
+        }
+        return coverClicked;
+    }
+    
+    /**
+     * Adds a like everytime user clicks
+     */
+    // this method is called from doMouse in GUI and adds a like evrytime user likes it
+    //prints number of likes
+    public void addLike() {
+        likes++;
+        UI.println(likes);
+    }
+    
     
     /**
      * Create getter and/or setter methods here as necessary
@@ -73,10 +104,6 @@ public class Book
         return author;
     }
     
-    public int getLikes(){
-        return likes;
-    }
-    
     public String getImage(){
         return image;
     }
@@ -88,4 +115,5 @@ public class Book
     public void setLocX(int locX){
         this.locX = locX;
     }
+    
 }

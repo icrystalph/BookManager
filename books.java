@@ -57,12 +57,11 @@ public class books
      * View all the books
      */
     public void viewBooks() {
-        
         // iterates through collection of books(values) and updates currentLocX for each value to prevennt stacking
         for (Book book : library.values()) {
             book.setLocX(currentLocX); //currentLockX initialised at start of program as 100.
             book.displayBook(); //calls displayBook method in book obect 
-            currentLocX += 110;
+            currentLocX += 110; //takes currentLocX and increases it by the width (100) and 10 for margin.
         }
         }
 
@@ -82,6 +81,13 @@ public class books
         }
         return false;
     }
+
+    //getter method for the library to allow GUI to access it in doMouse
+    
+    public HashMap<String, Book> getLibrary() {
+        return library;
+    }
+    
 }
 
     

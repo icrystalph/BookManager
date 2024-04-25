@@ -21,8 +21,10 @@ public class GUI
         UI.addButton("Add", this::addBook);
         UI.addButton("Remove", this::removeBook);
         UI.addButton("Find", this::findBook);
+        UI.setMouseListener(this::doMouse);
         UI.addButton("View all", this::viewBooks);
         UI.addButton("Quit", UI::quit);
+        
         
     }
 
@@ -70,6 +72,7 @@ public class GUI
     public void viewBooks() {
         books.viewBooks();
     }
+    
         
     /**
      * Finds book based on name
@@ -95,5 +98,21 @@ public class GUI
         }
             
         }
+        
+    /**
+     * Likes the book if user clicks on cover
+     */
+    
+    private void doMouse(String action, double x, double y) {
+        if (action.equals("clicked")){
+            for (Book book : books.getLibrary().values()) {
+                if (book.onCover(x, y)){
+                    book.addLike();
+                    break;
+                }
+            }
+        }
     }
+}
+
 
